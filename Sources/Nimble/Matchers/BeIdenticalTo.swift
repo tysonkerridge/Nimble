@@ -19,6 +19,7 @@ public func === (lhs: SyncExpectation<AnyObject>, rhs: AnyObject?) {
     lhs.to(beIdenticalTo(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func === (lhs: AsyncExpectation<AnyObject>, rhs: AnyObject?) async {
     await lhs.to(beIdenticalTo(rhs))
 }
@@ -27,6 +28,7 @@ public func !== (lhs: SyncExpectation<AnyObject>, rhs: AnyObject?) {
     lhs.toNot(beIdenticalTo(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func !== (lhs: AsyncExpectation<AnyObject>, rhs: AnyObject?) async {
     await lhs.toNot(beIdenticalTo(rhs))
 }

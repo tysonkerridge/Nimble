@@ -12,6 +12,7 @@ public func < <V: Comparable>(lhs: SyncExpectation<V>, rhs: V) {
     lhs.to(beLessThan(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func < <V: Comparable>(lhs: AsyncExpectation<V>, rhs: V) async {
     await lhs.to(beLessThan(rhs))
 }
@@ -33,6 +34,7 @@ public func < <V: NMBComparable>(lhs: SyncExpectation<V>, rhs: V?) {
     lhs.to(beLessThan(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func < <V: NMBComparable>(lhs: AsyncExpectation<V>, rhs: V?) async {
     await lhs.to(beLessThan(rhs))
 }

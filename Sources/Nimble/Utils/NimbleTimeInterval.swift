@@ -80,6 +80,7 @@ extension TimeInterval {
 }
 
 extension Date {
+    @available(iOSApplicationExtension 13.0.0, *)
     public func advanced(by nimbleTimeInterval: NimbleTimeInterval) -> Date {
         self.advanced(by: nimbleTimeInterval.timeInterval)
     }

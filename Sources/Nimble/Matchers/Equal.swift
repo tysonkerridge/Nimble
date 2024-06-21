@@ -195,66 +195,81 @@ public func != <T, C: Equatable>(lhs: SyncExpectation<[T: C]>, rhs: [T: C]?) {
     lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T: Equatable>(lhs: AsyncExpectation<T>, rhs: T) async {
     await lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T: Equatable>(lhs: AsyncExpectation<T>, rhs: T?) async {
     await lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T: Equatable>(lhs: AsyncExpectation<T>, rhs: T) async {
     await lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T: Equatable>(lhs: AsyncExpectation<T>, rhs: T?) async {
     await lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T: Equatable>(lhs: AsyncExpectation<[T]>, rhs: [T]?) async {
     await lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T: Equatable>(lhs: AsyncExpectation<[T]>, rhs: [T]?) async {
     await lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T>(lhs: AsyncExpectation<Set<T>>, rhs: Set<T>) async {
     await lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T>(lhs: AsyncExpectation<Set<T>>, rhs: Set<T>?) async {
     await lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T>(lhs: AsyncExpectation<Set<T>>, rhs: Set<T>) async {
     await lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T>(lhs: AsyncExpectation<Set<T>>, rhs: Set<T>?) async {
     await lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T: Comparable>(lhs: AsyncExpectation<Set<T>>, rhs: Set<T>) async {
     await lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T: Comparable>(lhs: AsyncExpectation<Set<T>>, rhs: Set<T>?) async {
     await lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T: Comparable>(lhs: AsyncExpectation<Set<T>>, rhs: Set<T>) async {
     await lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T: Comparable>(lhs: AsyncExpectation<Set<T>>, rhs: Set<T>?) async {
     await lhs.toNot(equal(rhs))
 }
-
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T, C: Equatable>(lhs: AsyncExpectation<[T: C]>, rhs: [T: C]?) async {
     await lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T, C: Equatable>(lhs: AsyncExpectation<[T: C]>, rhs: [T: C]?) async {
     await lhs.toNot(equal(rhs))
 }

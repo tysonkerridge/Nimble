@@ -10,6 +10,7 @@ public func == (lhs: SyncExpectation<()>, rhs: ()) {
     lhs.to(beVoid())
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == (lhs: AsyncExpectation<()>, rhs: ()) async {
     await lhs.to(beVoid())
 }
@@ -18,6 +19,7 @@ public func != (lhs: SyncExpectation<()>, rhs: ()) {
     lhs.toNot(beVoid())
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != (lhs: AsyncExpectation<()>, rhs: ()) async {
     await lhs.toNot(beVoid())
 }

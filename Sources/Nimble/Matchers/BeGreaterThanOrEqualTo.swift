@@ -13,6 +13,7 @@ public func >= <T: Comparable>(lhs: SyncExpectation<T>, rhs: T) {
     lhs.to(beGreaterThanOrEqualTo(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func >= <T: Comparable>(lhs: AsyncExpectation<T>, rhs: T) async {
     await lhs.to(beGreaterThanOrEqualTo(rhs))
 }
@@ -35,6 +36,7 @@ public func >= <T: NMBComparable>(lhs: SyncExpectation<T>, rhs: T) {
     lhs.to(beGreaterThanOrEqualTo(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func >= <T: NMBComparable>(lhs: AsyncExpectation<T>, rhs: T) async {
     await lhs.to(beGreaterThanOrEqualTo(rhs))
 }

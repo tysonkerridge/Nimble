@@ -52,6 +52,7 @@ internal func executeRequire<T>(_ expression: Expression<T>, _ style: Expectatio
     return result
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 internal func executeRequire<T>(_ expression: AsyncExpression<T>, _ style: ExpectationStyle, _ matcher: AsyncMatcher<T>, to: String, description: String?) async -> (Bool, FailureMessage, T?) {
     let msg = FailureMessage()
     msg.userDescription = description
@@ -118,6 +119,7 @@ public struct SyncRequirement<Value> {
 
     // MARK: - AsyncMatchers
     /// Tests the actual value using a matcher to match.
+    @available(iOSApplicationExtension 13.0.0, *)
     @discardableResult
     public func to(_ matcher: AsyncMatcher<Value>, description: String? = nil) async throws -> Value {
         let (pass, msg, result) = await executeRequire(expression.toAsyncExpression(), .toMatch, matcher, to: "to", description: description)
@@ -125,6 +127,7 @@ public struct SyncRequirement<Value> {
     }
 
     /// Tests the actual value using a matcher to not match.
+    @available(iOSApplicationExtension 13.0.0, *)
     @discardableResult
     public func toNot(_ matcher: AsyncMatcher<Value>, description: String? = nil) async throws -> Value {
         let (pass, msg, result) = await executeRequire(expression.toAsyncExpression(), .toNotMatch, matcher, to: "to not", description: description)
@@ -134,6 +137,7 @@ public struct SyncRequirement<Value> {
     /// Tests the actual value using a matcher to not match.
     ///
     /// Alias to toNot().
+    @available(iOSApplicationExtension 13.0.0, *)
     @discardableResult
     public func notTo(_ matcher: AsyncMatcher<Value>, description: String? = nil) async throws -> Value {
         try await toNot(matcher, description: description)
@@ -164,6 +168,7 @@ public struct AsyncRequirement<Value> {
     }
 
     /// Tests the actual value using a matcher to match.
+    @available(iOSApplicationExtension 13.0.0, *)
     @discardableResult
     public func to(_ matcher: Matcher<Value>, description: String? = nil) async throws -> Value {
         let (pass, msg, result) = executeRequire(await expression.toSynchronousExpression(), .toMatch, matcher, to: "to", description: description)
@@ -171,6 +176,7 @@ public struct AsyncRequirement<Value> {
     }
 
     /// Tests the actual value using a matcher to not match.
+    @available(iOSApplicationExtension 13.0.0, *)
     @discardableResult
     public func toNot(_ matcher: Matcher<Value>, description: String? = nil) async throws -> Value {
         let (pass, msg, result) = executeRequire(await expression.toSynchronousExpression(), .toNotMatch, matcher, to: "to not", description: description)
@@ -180,6 +186,7 @@ public struct AsyncRequirement<Value> {
     /// Tests the actual value using a matcher to not match.
     ///
     /// Alias to toNot().
+    @available(iOSApplicationExtension 13.0.0, *)
     @discardableResult
     public func notTo(_ matcher: Matcher<Value>, description: String? = nil) async throws -> Value {
         try await toNot(matcher, description: description)
@@ -187,6 +194,7 @@ public struct AsyncRequirement<Value> {
 
     // MARK: - AsyncMatchers
     /// Tests the actual value using a matcher to match.
+    @available(iOSApplicationExtension 13.0.0, *)
     @discardableResult
     public func to(_ matcher: AsyncMatcher<Value>, description: String? = nil) async throws -> Value {
         let (pass, msg, result) = await executeRequire(expression, .toMatch, matcher, to: "to", description: description)
@@ -194,6 +202,7 @@ public struct AsyncRequirement<Value> {
     }
 
     /// Tests the actual value using a matcher to not match.
+    @available(iOSApplicationExtension 13.0.0, *)
     @discardableResult
     public func toNot(_ matcher: AsyncMatcher<Value>, description: String? = nil) async throws -> Value {
         let (pass, msg, result) = await executeRequire(expression, .toNotMatch, matcher, to: "to not", description: description)
@@ -203,6 +212,7 @@ public struct AsyncRequirement<Value> {
     /// Tests the actual value using a matcher to not match.
     ///
     /// Alias to toNot().
+    @available(iOSApplicationExtension 13.0.0, *)
     @discardableResult
     public func notTo(_ matcher: AsyncMatcher<Value>, description: String? = nil) async throws -> Value {
         try await toNot(matcher, description: description)

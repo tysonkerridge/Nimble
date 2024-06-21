@@ -7,6 +7,7 @@
 /// Unlike the synchronous version of this call, this does not support catching Objective-C exceptions.
 ///
 /// @see AssertionHandler
+@available(iOSApplicationExtension 13.0.0, *)
 public func withAssertionHandler(_ tempAssertionHandler: AssertionHandler,
                                  file: FileString = #file,
                                  line: UInt = #line,
@@ -41,6 +42,7 @@ public func withAssertionHandler(_ tempAssertionHandler: AssertionHandler,
 ///                 assertion handler when this is true. Defaults to false.
 ///
 /// @see gatherFailingExpectations
+@available(iOSApplicationExtension 13.0.0, *)
 public func gatherExpectations(silently: Bool = false, closure: () async -> Void) async -> [AssertionRecord] {
     let previousRecorder = NimbleEnvironment.activeInstance.assertionHandler
     let recorder = AssertionRecorder()
@@ -71,6 +73,7 @@ public func gatherExpectations(silently: Bool = false, closure: () async -> Void
 ///
 /// @see gatherExpectations
 /// @see raiseException source for an example use case.
+@available(iOSApplicationExtension 13.0.0, *)
 public func gatherFailingExpectations(silently: Bool = false, closure: () async -> Void) async -> [AssertionRecord] {
     let assertions = await gatherExpectations(silently: silently, closure: closure)
     return assertions.filter { assertion in

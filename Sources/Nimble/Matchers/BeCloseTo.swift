@@ -126,6 +126,7 @@ public func ≈ <Value>(lhs: SyncExpectation<Value>, rhs: Value) where Value: Co
     lhs.to(beCloseTo(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func ≈ <Value>(lhs: AsyncExpectation<Value>, rhs: Value) async where Value: Collection, Value.Element: FloatingPoint {
     await lhs.to(beCloseTo(rhs))
 }
@@ -134,6 +135,7 @@ public func ≈ <Value: FloatingPoint>(lhs: SyncExpectation<Value>, rhs: Value) 
     lhs.to(beCloseTo(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func ≈ <Value: FloatingPoint>(lhs: AsyncExpectation<Value>, rhs: Value) async {
     await lhs.to(beCloseTo(rhs))
 }
@@ -142,6 +144,7 @@ public func ≈ <Value: FloatingPoint>(lhs: SyncExpectation<Value>, rhs: (expect
     lhs.to(beCloseTo(rhs.expected, within: rhs.delta))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func ≈ <Value: FloatingPoint>(lhs: AsyncExpectation<Value>, rhs: (expected: Value, delta: Value)) async {
     await lhs.to(beCloseTo(rhs.expected, within: rhs.delta))
 }
@@ -150,6 +153,7 @@ public func == <Value: FloatingPoint>(lhs: SyncExpectation<Value>, rhs: (expecte
     lhs.to(beCloseTo(rhs.expected, within: rhs.delta))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <Value: FloatingPoint>(lhs: AsyncExpectation<Value>, rhs: (expected: Value, delta: Value)) async {
     await lhs.to(beCloseTo(rhs.expected, within: rhs.delta))
 }
@@ -158,6 +162,7 @@ public func ≈ <Value: NMBDoubleConvertible>(lhs: SyncExpectation<Value>, rhs: 
     lhs.to(beCloseTo(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func ≈ <Value: NMBDoubleConvertible>(lhs: AsyncExpectation<Value>, rhs: Value) async {
     await lhs.to(beCloseTo(rhs))
 }
@@ -166,6 +171,7 @@ public func ≈ <Value: NMBDoubleConvertible>(lhs: SyncExpectation<Value>, rhs: 
     lhs.to(beCloseTo(rhs.expected, within: rhs.delta))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func ≈ <Value: NMBDoubleConvertible>(lhs: AsyncExpectation<Value>, rhs: (expected: Value, delta: Double)) async {
     await lhs.to(beCloseTo(rhs.expected, within: rhs.delta))
 }
@@ -174,6 +180,7 @@ public func == <Value: NMBDoubleConvertible>(lhs: SyncExpectation<Value>, rhs: (
     lhs.to(beCloseTo(rhs.expected, within: rhs.delta))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <Value: NMBDoubleConvertible>(lhs: AsyncExpectation<Value>, rhs: (expected: Value, delta: Double)) async {
     await lhs.to(beCloseTo(rhs.expected, within: rhs.delta))
 }

@@ -17,6 +17,7 @@ public func map<T, U>(_ transform: @escaping (T) throws -> U, _ matcher: Matcher
 /// For example, you might only care that a particular property on a method equals some other value.
 /// So, you could write `expect(myObject).to(lens(\.someIntValue, equal(3))`.
 /// This is also useful in conjunction with ``satisfyAllOf`` to do a partial equality of an object.
+@available(iOSApplicationExtension 13.0.0, *)
 public func map<T, U>(_ transform: @escaping (T) async throws -> U, _ matcher: some AsyncableMatcher<U>) -> AsyncMatcher<T> {
     AsyncMatcher { (received: AsyncExpression<T>) in
         try await matcher.satisfies(received.cast { value in

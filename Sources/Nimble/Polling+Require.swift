@@ -194,6 +194,7 @@ extension SyncRequirement {
     /// Tests the actual value using a matcher to match by checking continuously
     /// at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toEventually(_ matcher: Matcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -220,6 +221,7 @@ extension SyncRequirement {
     /// Tests the actual value using a matcher to not match by checking
     /// continuously at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toEventuallyNot(_ matcher: Matcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -248,6 +250,7 @@ extension SyncRequirement {
     ///
     /// Alias of toEventuallyNot()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toNotEventually(_ matcher: Matcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toEventuallyNot(matcher, timeout: timeout, pollInterval: pollInterval, description: description)
     }
@@ -255,6 +258,7 @@ extension SyncRequirement {
     /// Tests the actual value using a matcher to never match by checking
     /// continuously at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toNever(_ matcher: Matcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
         let asyncExpression = expression.toAsyncExpression()
@@ -282,6 +286,7 @@ extension SyncRequirement {
     ///
     /// Alias of toNever()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func neverTo(_ matcher: Matcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toNever(matcher, until: until, pollInterval: pollInterval, description: description)
     }
@@ -289,6 +294,7 @@ extension SyncRequirement {
     /// Tests the actual value using a matcher to always match by checking
     /// continusouly at each pollInterval until the timeout is reached
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toAlways(_ matcher: Matcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
         let asyncExpression = expression.toAsyncExpression()
@@ -316,6 +322,7 @@ extension SyncRequirement {
     ///
     /// Alias of toAlways()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func alwaysTo(_ matcher: Matcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toAlways(matcher, until: until, pollInterval: pollInterval, description: description)
     }
@@ -324,6 +331,7 @@ extension SyncRequirement {
     /// Tests the actual value using a matcher to match by checking continuously
     /// at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toEventually(_ matcher: AsyncMatcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -350,6 +358,7 @@ extension SyncRequirement {
     /// Tests the actual value using a matcher to not match by checking
     /// continuously at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toEventuallyNot(_ matcher: AsyncMatcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -378,6 +387,7 @@ extension SyncRequirement {
     ///
     /// Alias of toEventuallyNot()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toNotEventually(_ matcher: AsyncMatcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toEventuallyNot(matcher, timeout: timeout, pollInterval: pollInterval, description: description)
     }
@@ -385,6 +395,7 @@ extension SyncRequirement {
     /// Tests the actual value using a matcher to never match by checking
     /// continuously at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toNever(_ matcher: AsyncMatcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
         let asyncExpression = expression.toAsyncExpression()
@@ -412,6 +423,7 @@ extension SyncRequirement {
     ///
     /// Alias of toNever()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func neverTo(_ matcher: AsyncMatcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toNever(matcher, until: until, pollInterval: pollInterval, description: description)
     }
@@ -419,6 +431,7 @@ extension SyncRequirement {
     /// Tests the actual value using a matcher to always match by checking
     /// continusouly at each pollInterval until the timeout is reached
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toAlways(_ matcher: AsyncMatcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
         let asyncExpression = expression.toAsyncExpression()
@@ -446,6 +459,7 @@ extension SyncRequirement {
     ///
     /// Alias of toAlways()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func alwaysTo(_ matcher: AsyncMatcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toAlways(matcher, until: until, pollInterval: pollInterval, description: description)
     }
@@ -456,6 +470,7 @@ extension AsyncRequirement {
     /// Tests the actual value using a matcher to match by checking continuously
     /// at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toEventually(_ matcher: Matcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -480,6 +495,7 @@ extension AsyncRequirement {
     /// Tests the actual value using a matcher to not match by checking
     /// continuously at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toEventuallyNot(_ matcher: Matcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -506,6 +522,7 @@ extension AsyncRequirement {
     ///
     /// Alias of toEventuallyNot()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toNotEventually(_ matcher: Matcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toEventuallyNot(matcher, timeout: timeout, pollInterval: pollInterval, description: description)
     }
@@ -513,6 +530,7 @@ extension AsyncRequirement {
     /// Tests the actual value using a matcher to never match by checking
     /// continuously at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toNever(_ matcher: Matcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -539,6 +557,7 @@ extension AsyncRequirement {
     ///
     /// Alias of toNever()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func neverTo(_ matcher: Matcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toNever(matcher, until: until, pollInterval: pollInterval, description: description)
     }
@@ -546,6 +565,7 @@ extension AsyncRequirement {
     /// Tests the actual value using a matcher to always match by checking
     /// continusouly at each pollInterval until the timeout is reached
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toAlways(_ matcher: Matcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -572,6 +592,7 @@ extension AsyncRequirement {
     ///
     /// Alias of toAlways()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func alwaysTo(_ matcher: Matcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toAlways(matcher, until: until, pollInterval: pollInterval, description: description)
     }
@@ -580,6 +601,7 @@ extension AsyncRequirement {
     /// Tests the actual value using a matcher to match by checking continuously
     /// at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toEventually(_ matcher: AsyncMatcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -604,6 +626,7 @@ extension AsyncRequirement {
     /// Tests the actual value using a matcher to not match by checking
     /// continuously at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toEventuallyNot(_ matcher: AsyncMatcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -630,6 +653,7 @@ extension AsyncRequirement {
     ///
     /// Alias of toEventuallyNot()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toNotEventually(_ matcher: AsyncMatcher<Value>, timeout: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toEventuallyNot(matcher, timeout: timeout, pollInterval: pollInterval, description: description)
     }
@@ -637,6 +661,7 @@ extension AsyncRequirement {
     /// Tests the actual value using a matcher to never match by checking
     /// continuously at each pollInterval until the timeout is reached.
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toNever(_ matcher: AsyncMatcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -663,6 +688,7 @@ extension AsyncRequirement {
     ///
     /// Alias of toNever()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func neverTo(_ matcher: AsyncMatcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toNever(matcher, until: until, pollInterval: pollInterval, description: description)
     }
@@ -670,6 +696,7 @@ extension AsyncRequirement {
     /// Tests the actual value using a matcher to always match by checking
     /// continusouly at each pollInterval until the timeout is reached
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toAlways(_ matcher: AsyncMatcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         nimblePrecondition(expression.isClosure, "NimbleInternalError", toEventuallyRequiresClosureError.stringValue)
 
@@ -696,6 +723,7 @@ extension AsyncRequirement {
     ///
     /// Alias of toAlways()
     @discardableResult
+    @available(iOSApplicationExtension 13.0.0, *)
     public func alwaysTo(_ matcher: AsyncMatcher<Value>, until: NimbleTimeInterval = PollingDefaults.timeout, pollInterval: NimbleTimeInterval = PollingDefaults.pollInterval, description: String? = nil) async throws -> Value {
         return try await toAlways(matcher, until: until, pollInterval: pollInterval, description: description)
     }
@@ -734,6 +762,7 @@ public func pollUnwraps<T>(file: FileString = #file, line: UInt = #line, _ expre
 /// Makes sure that the async expression evaluates to a non-nil value, otherwise throw an error.
 /// As you can tell, this is a much less verbose equivalent to `requirea(expression).toEventuallyNot(beNil())`
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func pollUnwrap<T>(file: FileString = #file, line: UInt = #line, _ expression: @escaping () async throws -> T?) async throws -> T {
     try await requirea(file: file, line: line, try await expression()).toEventuallyNot(beNil())
 }
@@ -741,6 +770,7 @@ public func pollUnwrap<T>(file: FileString = #file, line: UInt = #line, _ expres
 /// Makes sure that the async expression evaluates to a non-nil value, otherwise throw an error.
 /// As you can tell, this is a much less verbose equivalent to `requirea(expression).toEventuallyNot(beNil())`
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func pollUnwrap<T>(file: FileString = #file, line: UInt = #line, _ expression: () -> (() async throws -> T?)) async throws -> T {
     try await requirea(file: file, line: line, expression()).toEventuallyNot(beNil())
 }
@@ -748,6 +778,7 @@ public func pollUnwrap<T>(file: FileString = #file, line: UInt = #line, _ expres
 /// Makes sure that the async expression evaluates to a non-nil value, otherwise throw an error.
 /// As you can tell, this is a much less verbose equivalent to `requirea(expression).toEventuallyNot(beNil())`
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func pollUnwrapa<T>(file: FileString = #file, line: UInt = #line, _ expression: @autoclosure @escaping () async throws -> T?) async throws -> T {
     try await requirea(file: file, line: line, try await expression()).toEventuallyNot(beNil())
 }
@@ -755,6 +786,7 @@ public func pollUnwrapa<T>(file: FileString = #file, line: UInt = #line, _ expre
 /// Makes sure that the async expression evaluates to a non-nil value, otherwise throw an error.
 /// As you can tell, this is a much less verbose equivalent to `requirea(expression).toEventuallyNot(beNil())`
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func pollUnwrapa<T>(file: FileString = #file, line: UInt = #line, _ expression: @autoclosure () -> (() async throws -> T?)) async throws -> T {
     try await requirea(file: file, line: line, expression()).toEventuallyNot(beNil())
 }

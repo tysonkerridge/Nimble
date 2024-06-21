@@ -67,6 +67,7 @@ public struct AsyncExpression<Value> {
     }
 
     /// Creates a new synchronous expression, for use in Matchers.
+    @available(iOSApplicationExtension 13.0.0, *)
     public func toSynchronousExpression() async -> Expression<Value> {
         let value: Result<Value?, Error>
         do {
@@ -90,6 +91,7 @@ public struct AsyncExpression<Value> {
     ///
     /// - Parameter block: The block that can cast the current Expression value to a
     ///              new type.
+    @available(iOSApplicationExtension 13.0.0, *)
     public func cast<U>(_ block: @escaping (Value?) throws -> U?) -> AsyncExpression<U> {
         AsyncExpression<U>(
             expression: ({ try await block(self.evaluate()) }),
@@ -98,6 +100,7 @@ public struct AsyncExpression<Value> {
         )
     }
 
+    @available(iOSApplicationExtension 13.0.0, *)
     public func cast<U>(_ block: @escaping (Value?) async throws -> U?) -> AsyncExpression<U> {
         AsyncExpression<U>(
             expression: ({ try await block(self.evaluate()) }),
@@ -106,6 +109,7 @@ public struct AsyncExpression<Value> {
         )
     }
 
+    @available(iOSApplicationExtension 13.0.0, *)
     public func evaluate() async throws -> Value? {
         try await self._expression(_withoutCaching)
     }
@@ -119,6 +123,7 @@ public struct AsyncExpression<Value> {
         )
     }
 
+    @available(iOSApplicationExtension 13.0.0, *)
     public func withCaching() -> AsyncExpression<Value> {
         AsyncExpression(
             memoizedExpression: memoizedClosure { try await self.evaluate() },

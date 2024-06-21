@@ -17,6 +17,7 @@ public func == <T1: Equatable, T2: Equatable>(
     lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T1: Equatable, T2: Equatable>(
     lhs: AsyncExpectation<(T1, T2)>,
     rhs: (T1, T2)?
@@ -31,6 +32,7 @@ public func != <T1: Equatable, T2: Equatable>(
     lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T1: Equatable, T2: Equatable>(
     lhs: AsyncExpectation<(T1, T2)>,
     rhs: (T1, T2)?
@@ -55,6 +57,7 @@ public func == <T1: Equatable, T2: Equatable, T3: Equatable>(
     lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T1: Equatable, T2: Equatable, T3: Equatable>(
     lhs: AsyncExpectation<(T1, T2, T3)>,
     rhs: (T1, T2, T3)?
@@ -70,6 +73,7 @@ public func != <T1: Equatable, T2: Equatable, T3: Equatable>(
     lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T1: Equatable, T2: Equatable, T3: Equatable>(
     lhs: AsyncExpectation<(T1, T2, T3)>,
     rhs: (T1, T2, T3)?
@@ -95,6 +99,7 @@ public func == <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable>(
     lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable>(
     lhs: AsyncExpectation<(T1, T2, T3, T4)>,
     rhs: (T1, T2, T3, T4)?
@@ -109,6 +114,7 @@ public func != <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable>(
     lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable>(
     lhs: AsyncExpectation<(T1, T2, T3, T4)>,
     rhs: (T1, T2, T3, T4)?
@@ -134,6 +140,7 @@ public func == <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable, T5: 
     lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable, T5: Equatable>(
     lhs: AsyncExpectation<(T1, T2, T3, T4, T5)>,
     rhs: (T1, T2, T3, T4, T5)?
@@ -149,6 +156,7 @@ public func != <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable, T5: 
     lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable, T5: Equatable>(
     lhs: AsyncExpectation<(T1, T2, T3, T4, T5)>,
     rhs: (T1, T2, T3, T4, T5)?
@@ -174,6 +182,7 @@ public func == <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable, T5: 
     lhs.to(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func == <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable, T5: Equatable, T6: Equatable>(
     lhs: AsyncExpectation<(T1, T2, T3, T4, T5, T6)>,
     rhs: (T1, T2, T3, T4, T5, T6)?
@@ -188,6 +197,7 @@ public func != <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable, T5: 
     lhs.toNot(equal(rhs))
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func != <T1: Equatable, T2: Equatable, T3: Equatable, T4: Equatable, T5: Equatable, T6: Equatable>(
     lhs: AsyncExpectation<(T1, T2, T3, T4, T5, T6)>,
     rhs: (T1, T2, T3, T4, T5, T6)?

@@ -1,3 +1,4 @@
+@available(iOSApplicationExtension 13.0.0, *)
 public func allPass<S: Sequence>(
     _ passFunc: @escaping (S.Element) async throws -> Bool
 ) -> AsyncMatcher<S> {
@@ -10,6 +11,7 @@ public func allPass<S: Sequence>(
     return createMatcher(matcher)
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func allPass<S: Sequence>(
     _ passName: String,
     _ passFunc: @escaping (S.Element) async throws -> Bool
@@ -23,10 +25,12 @@ public func allPass<S: Sequence>(
     return createMatcher(matcher)
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func allPass<S: Sequence>(_ elementMatcher: AsyncMatcher<S.Element>) -> AsyncMatcher<S> {
     return createMatcher(elementMatcher)
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 private func createMatcher<S: Sequence>(_ elementMatcher: AsyncMatcher<S.Element>) -> AsyncMatcher<S> {
     return AsyncMatcher { actualExpression in
         guard let actualValue = try await actualExpression.evaluate() else {

@@ -57,6 +57,7 @@ internal enum AsyncPollResult<T> {
 // Inspired by swift-async-algorithm's AsyncChannel, but massively simplified
 // especially given Nimble's usecase.
 // AsyncChannel: https://github.com/apple/swift-async-algorithms/blob/main/Sources/AsyncAlgorithms/Channels/AsyncChannel.swift
+@available(iOSApplicationExtension 13.0.0, *)
 internal actor AsyncPromise<T> {
     private let storage = Storage()
 
@@ -131,6 +132,7 @@ internal actor AsyncPromise<T> {
 /// checked.
 ///
 /// In addition, stopping the run loop is used to halt code executed on the main run loop.
+@available(iOSApplicationExtension 13.0.0, *)
 private func timeout<T>(timeoutQueue: DispatchQueue, timeoutInterval: NimbleTimeInterval, forcefullyAbortTimeout: NimbleTimeInterval) async -> AsyncPollResult<T> {
     do {
         try await Task.sleep(nanoseconds: timeoutInterval.nanoseconds)
@@ -165,6 +167,7 @@ private func timeout<T>(timeoutQueue: DispatchQueue, timeoutInterval: NimbleTime
     return await promise.value
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 private func poll(_ pollInterval: NimbleTimeInterval, expression: @escaping () async throws -> PollStatus) async -> AsyncPollResult<Bool> {
     for try await _ in AsyncTimerSequence(interval: pollInterval) {
         do {
@@ -194,6 +197,7 @@ private func poll(_ pollInterval: NimbleTimeInterval, expression: @escaping () a
 /// - The async expectation raised an unexpected error (swift)
 ///
 /// The returned AsyncPollResult will NEVER be .incomplete.
+@available(iOSApplicationExtension 13.0.0, *)
 private func runPoller(
     timeoutInterval: NimbleTimeInterval,
     pollInterval: NimbleTimeInterval,
@@ -253,6 +257,7 @@ private final class Box<T: Sendable>: @unchecked Sendable {
 }
 
 // swiftlint:disable:next function_parameter_count
+@available(iOSApplicationExtension 13.0.0, *)
 private func runAwaitTrigger<T>(
     awaiter: Awaiter,
     timeoutInterval: NimbleTimeInterval,
@@ -305,6 +310,7 @@ private func runAwaitTrigger<T>(
     }
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 internal func performBlock<T>(
     timeoutInterval: NimbleTimeInterval,
     leeway: NimbleTimeInterval,
@@ -318,6 +324,7 @@ internal func performBlock<T>(
         file: file, line: line, closure)
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 internal func pollBlock(
     pollInterval: NimbleTimeInterval,
     timeoutInterval: NimbleTimeInterval,

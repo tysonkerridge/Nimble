@@ -33,6 +33,7 @@ extension SyncExpectation {
     }
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 extension AsyncExpectation {
     public static func == (lhs: AsyncExpectation, rhs: ExpectationNil) async {
         await lhs.to(beNil())

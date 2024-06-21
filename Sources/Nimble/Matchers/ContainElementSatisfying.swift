@@ -21,6 +21,7 @@ public func containElementSatisfying<S: Sequence>(
     }
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 public func containElementSatisfying<S: Sequence>(
     _ matcher: @escaping ((S.Element) async -> Bool), _ matcherDescription: String = ""
 ) -> AsyncMatcher<S> {

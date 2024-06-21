@@ -13,12 +13,14 @@ internal protocol NimbleClockProtocol: Sendable {
 
     func now() -> Instant
 
+    @available(iOSApplicationExtension 13.0.0, *)
     func sleep(until: Instant) async throws
 }
 
 internal protocol NimbleInstantProtocol: Sendable, Comparable {
     associatedtype Interval: NimbleIntervalProtocol
 
+    @available(iOSApplicationExtension 13.0.0, *)
     func advanced(byInterval: Interval) -> Self
 
     func intervalSince(_: Self) -> Interval
@@ -40,6 +42,7 @@ internal struct DateClock: NimbleClockProtocol {
         Date()
     }
 
+    @available(iOSApplicationExtension 13.0.0, *)
     func sleep(until: Instant) async throws {
         try await Task.sleep(nanoseconds: UInt64(Swift.max(0, until.timeIntervalSinceNow * 1_000_000_000)))
     }
@@ -52,6 +55,7 @@ extension Date: @unchecked Sendable {}
 extension Date: NimbleInstantProtocol {
     typealias Interval = NimbleTimeInterval
 
+    @available(iOSApplicationExtension 13.0.0, *)
     func advanced(byInterval interval: NimbleTimeInterval) -> Date {
         advanced(by: interval.timeInterval)
     }
@@ -90,6 +94,7 @@ extension NimbleTimeInterval: NimbleIntervalProtocol {
 // Similar to (made by directly referencing) swift-async-algorithm's AsyncTimerSequence.
 // https://github.com/apple/swift-async-algorithms/blob/main/Sources/AsyncAlgorithms/AsyncTimerSequence.swift
 // Only this one is compatible with OS versions that Nimble supports.
+@available(iOSApplicationExtension 13.0.0, *)
 struct AsyncTimerSequence<Clock: NimbleClockProtocol>: AsyncSequence {
     typealias Element = Void
     let clock: Clock
@@ -114,6 +119,7 @@ struct AsyncTimerSequence<Clock: NimbleClockProtocol>: AsyncSequence {
             }
         }
 
+        @available(iOSApplicationExtension 13.0.0, *)
         mutating func next() async -> Void? {
             let next = nextDeadline()
             do {
@@ -131,6 +137,7 @@ struct AsyncTimerSequence<Clock: NimbleClockProtocol>: AsyncSequence {
     }
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 extension AsyncTimerSequence<DateClock> {
     init(interval: NimbleTimeInterval) {
         self.init(clock: DateClock(), interval: interval)

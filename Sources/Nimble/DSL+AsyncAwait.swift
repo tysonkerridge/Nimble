@@ -40,6 +40,7 @@ public func expect(file: FileString = #file, line: UInt = #line, _ expression: (
 
 /// Make an ``AsyncExpectation`` on a given actual value. The value given is lazily evaluated.
 /// This is provided to avoid  confusion between `expect -> SyncExpectation` and `expect -> AsyncExpectation`.
+@available(iOSApplicationExtension 13.0.0, *)
 public func expecta<T>(file: FileString = #file, line: UInt = #line, _ expression: @autoclosure @escaping () async throws -> T?) async -> AsyncExpectation<T> {
     return AsyncExpectation(
         expression: AsyncExpression(
@@ -50,6 +51,7 @@ public func expecta<T>(file: FileString = #file, line: UInt = #line, _ expressio
 
 /// Make an ``AsyncExpectation`` on a given actual value. The closure is lazily invoked.
 /// This is provided to avoid  confusion between `expect -> SyncExpectation`  and `expect -> AsyncExpectation`
+@available(iOSApplicationExtension 13.0.0, *)
 public func expecta<T>(file: FileString = #file, line: UInt = #line, _ expression: @autoclosure () -> (() async throws -> T)) async -> AsyncExpectation<T> {
     return AsyncExpectation(
         expression: AsyncExpression(
@@ -60,6 +62,7 @@ public func expecta<T>(file: FileString = #file, line: UInt = #line, _ expressio
 
 /// Make an ``AsyncExpectation`` on a given actual value. The closure is lazily invoked.
 /// This is provided to avoid  confusion between `expect -> SyncExpectation`  and `expect -> AsyncExpectation`
+@available(iOSApplicationExtension 13.0.0, *)
 public func expecta<T>(file: FileString = #file, line: UInt = #line, _ expression: @autoclosure () -> (() async throws -> T?)) async -> AsyncExpectation<T> {
     return AsyncExpectation(
         expression: AsyncExpression(
@@ -70,6 +73,7 @@ public func expecta<T>(file: FileString = #file, line: UInt = #line, _ expressio
 
 /// Make an ``AsyncExpectation`` on a given actual value. The closure is lazily invoked.
 /// This is provided to avoid  confusion between `expect -> SyncExpectation`  and `expect -> AsyncExpectation`
+@available(iOSApplicationExtension 13.0.0, *)
 public func expecta(file: FileString = #file, line: UInt = #line, _ expression: @autoclosure () -> (() async throws -> Void)) async -> AsyncExpectation<Void> {
     return AsyncExpectation(
         expression: AsyncExpression(
@@ -87,6 +91,7 @@ public func expecta(file: FileString = #file, line: UInt = #line, _ expression: 
 ///
 /// @warning
 /// Unlike the synchronous version of this call, this does not support catching Objective-C exceptions.
+@available(iOSApplicationExtension 13.0.0, *)
 public func waitUntil(timeout: NimbleTimeInterval = PollingDefaults.timeout, file: FileString = #file, line: UInt = #line, action: @escaping (@escaping () -> Void) async -> Void) async {
     await throwableUntil(timeout: timeout) { done in
         await action(done)
@@ -100,6 +105,7 @@ public func waitUntil(timeout: NimbleTimeInterval = PollingDefaults.timeout, fil
 ///
 /// @warning
 /// Unlike the synchronous version of this call, this does not support catching Objective-C exceptions.
+@available(iOSApplicationExtension 13.0.0, *)
 public func waitUntil(timeout: NimbleTimeInterval = PollingDefaults.timeout, file: FileString = #file, line: UInt = #line, action: @escaping (@escaping () -> Void) -> Void) async {
     await throwableUntil(timeout: timeout, file: file, line: line) { done in
         action(done)
@@ -111,6 +117,7 @@ private enum ErrorResult {
     case none
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 private func throwableUntil(
     timeout: NimbleTimeInterval,
     file: FileString = #file,

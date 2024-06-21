@@ -3,6 +3,7 @@
 
 import Dispatch
 
+@available(iOSApplicationExtension 13.0.0, *)
 @MainActor
 internal func execute<T>(_ expression: AsyncExpression<T>, style: ExpectationStyle, to: String, description: String?, matcherExecutor: () async throws -> MatcherResult) async -> (Bool, FailureMessage) {
     let msg = FailureMessage()
@@ -21,6 +22,7 @@ internal func execute<T>(_ expression: AsyncExpression<T>, style: ExpectationSty
     }
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 internal actor Poller<T> {
     private var lastMatcherResult: MatcherResult?
 
@@ -65,6 +67,7 @@ internal actor Poller<T> {
 }
 
 // swiftlint:disable:next function_parameter_count
+@available(iOSApplicationExtension 13.0.0, *)
 internal func poll<T>(
     expression: AsyncExpression<T>,
     style: ExpectationStyle,
@@ -86,6 +89,7 @@ internal func poll<T>(
     )
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 extension SyncExpectation {
     // MARK: - With Synchronous Matchers
     /// Tests the actual value using a matcher to match by checking continuously
@@ -348,6 +352,7 @@ extension SyncExpectation {
     }
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 extension AsyncExpectation {
     // MARK: - With Synchronous Matchers
     /// Tests the actual value using a matcher to match by checking continuously

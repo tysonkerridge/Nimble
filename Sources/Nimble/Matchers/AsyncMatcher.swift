@@ -1,9 +1,12 @@
+@available(iOSApplicationExtension 13.0.0, *)
 public protocol AsyncableMatcher<Value> {
     associatedtype Value
     func satisfies(_ expression: AsyncExpression<Value>) async throws -> MatcherResult
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 extension Matcher: AsyncableMatcher {
+    
     public func satisfies(_ expression: AsyncExpression<T>) async throws -> MatcherResult {
         try satisfies(await expression.toSynchronousExpression())
     }
@@ -27,6 +30,7 @@ extension Matcher: AsyncableMatcher {
 /// These can also be used with either `Expectation`s or `AsyncExpectation`s.
 /// But these can only be used from async contexts, and are unavailable in Objective-C.
 /// You can, however, call regular Matchers from an AsyncMatcher, if you wish to compose one like that.
+@available(iOSApplicationExtension 13.0.0, *)
 public struct AsyncMatcher<T>: AsyncableMatcher {
     fileprivate var matcher: (AsyncExpression<T>) async throws -> MatcherResult
 
@@ -44,9 +48,11 @@ public struct AsyncMatcher<T>: AsyncableMatcher {
 }
 
 @available(*, deprecated, renamed: "AsyncMatcher")
+@available(iOSApplicationExtension 13.0.0, *)
 public typealias AsyncPredicate = AsyncMatcher
 
 /// Provides convenience helpers to defining matchers
+@available(iOSApplicationExtension 13.0.0, *)
 extension AsyncMatcher {
     /// Like Matcher() constructor, but automatically guard against nil (actual) values
     public static func define(matcher: @escaping (AsyncExpression<T>) async throws -> MatcherResult) -> AsyncMatcher<T> {
@@ -92,6 +98,7 @@ extension AsyncMatcher {
     }
 }
 
+@available(iOSApplicationExtension 13.0.0, *)
 extension AsyncMatcher {
     // Someday, make this public? Needs documentation
     internal func after(f: @escaping (AsyncExpression<T>, MatcherResult) async throws -> MatcherResult) -> AsyncMatcher<T> {

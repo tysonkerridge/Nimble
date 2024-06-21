@@ -167,6 +167,7 @@ public func require<T>(file: FileString = #file, line: UInt = #line, customError
 ///
 /// This is provided to avoid  confusion between `require -> SyncRequirement` and `require -> AsyncRequirement`.
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func requirea<T>(file: FileString = #file, line: UInt = #line, customError: Error? = nil, _ expression: @autoclosure @escaping () async throws -> T?) async -> AsyncRequirement<T> {
     return AsyncRequirement(
         expression: AsyncExpression(
@@ -183,6 +184,7 @@ public func requirea<T>(file: FileString = #file, line: UInt = #line, customErro
 ///
 /// This is provided to avoid  confusion between `require -> SyncRequirement`  and `require -> AsyncRequirement`
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func requirea<T>(file: FileString = #file, line: UInt = #line, customError: Error? = nil, _ expression: @autoclosure () -> (() async throws -> T)) async -> AsyncRequirement<T> {
     return AsyncRequirement(
         expression: AsyncExpression(
@@ -199,6 +201,7 @@ public func requirea<T>(file: FileString = #file, line: UInt = #line, customErro
 ///
 /// This is provided to avoid  confusion between `require -> SyncRequirement`  and `require -> AsyncRequirement`
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func requirea<T>(file: FileString = #file, line: UInt = #line, customError: Error? = nil, _ expression: @autoclosure () -> (() async throws -> T?)) async -> AsyncRequirement<T> {
     return AsyncRequirement(
         expression: AsyncExpression(
@@ -256,6 +259,7 @@ public func unwraps<T>(file: FileString = #file, line: UInt = #line, customError
 /// `unwrap` will return the result of the expression if it is non-nil, and throw an error if the value is nil.
 /// if a `customError` is given, then that will be thrown. Otherwise, a ``RequireError`` will be thrown.
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func unwrap<T>(file: FileString = #file, line: UInt = #line, customError: Error? = nil, _ expression: @escaping () async throws -> T?) async throws -> T {
     try await requirea(file: file, line: line, customError: customError, try await expression()).toNot(beNil())
 }
@@ -266,6 +270,7 @@ public func unwrap<T>(file: FileString = #file, line: UInt = #line, customError:
 /// `unwrap` will return the result of the expression if it is non-nil, and throw an error if the value is nil.
 /// if a `customError` is given, then that will be thrown. Otherwise, a ``RequireError`` will be thrown.
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func unwrap<T>(file: FileString = #file, line: UInt = #line, customError: Error? = nil, _ expression: () -> (() async throws -> T?)) async throws -> T {
     try await requirea(file: file, line: line, customError: customError, expression()).toNot(beNil())
 }
@@ -276,6 +281,7 @@ public func unwrap<T>(file: FileString = #file, line: UInt = #line, customError:
 /// `unwrapa` will return the result of the expression if it is non-nil, and throw an error if the value is nil.
 /// if a `customError` is given, then that will be thrown. Otherwise, a ``RequireError`` will be thrown.
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func unwrapa<T>(file: FileString = #file, line: UInt = #line, customError: Error? = nil, _ expression: @autoclosure @escaping () async throws -> T?) async throws -> T {
     try await requirea(file: file, line: line, customError: customError, try await expression()).toNot(beNil())
 }
@@ -286,6 +292,7 @@ public func unwrapa<T>(file: FileString = #file, line: UInt = #line, customError
 /// `unwrapa` will return the result of the expression if it is non-nil, and throw an error if the value is nil.
 /// if a `customError` is given, then that will be thrown. Otherwise, a ``RequireError`` will be thrown.
 @discardableResult
+@available(iOSApplicationExtension 13.0.0, *)
 public func unwrapa<T>(file: FileString = #file, line: UInt = #line, customError: Error? = nil, _ expression: @autoclosure () -> (() async throws -> T?)) async throws -> T {
     try await requirea(file: file, line: line, customError: customError, expression()).toNot(beNil())
 }
